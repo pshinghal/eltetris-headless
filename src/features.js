@@ -23,9 +23,13 @@
  * Features that are used by the algorithm are implemented here.
  */
 
+module.exports = {};
+
 function GetLandingHeight(last_move, board) {
   return last_move.landing_height + ((last_move.piece.length - 1) / 2);
 }
+
+module.exports.GetLandingHeight = GetLandingHeight;
 
 function GetRowTransitions(board, num_columns) {
   var transitions = 0;
@@ -52,6 +56,8 @@ function GetRowTransitions(board, num_columns) {
   return transitions;
 }
 
+module.exports.GetRowTransitions = GetRowTransitions;
+
 function GetColumnTransitions(board, num_columns) {
   var transitions = 0;
   var last_bit = 1;
@@ -74,6 +80,8 @@ function GetColumnTransitions(board, num_columns) {
   return transitions;
 }
 
+module.exports.GetColumnTransitions = GetColumnTransitions;
+
 function GetNumberOfHoles(board, num_columns) {
   var holes = 0;
   var row_holes = 0x0000;
@@ -91,6 +99,8 @@ function GetNumberOfHoles(board, num_columns) {
 
   return holes;
 }
+
+module.exports.GetNumberOfHoles = GetNumberOfHoles;
 
 function GetWellSums(board, num_columns) {
   var well_sums = 0;
@@ -148,3 +158,5 @@ function GetWellSums(board, num_columns) {
 
   return well_sums;
 }
+
+module.exports.GetWellSums = GetWellSums;

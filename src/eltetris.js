@@ -28,6 +28,9 @@
  *  number_of_columns - Number of columns in the tetris game.
  *  number_of_rows - Number of rows in the tetris game.
  */
+var PIECES = require("./pieces");
+var features = require("./features");
+
 function ElTetris(number_of_columns, number_of_rows) {
   this.number_of_rows = number_of_rows;
   this.number_of_columns = number_of_columns;
@@ -119,12 +122,12 @@ ElTetris.prototype.pickMove = function(piece) {
  *   better the board.
  */
 ElTetris.prototype.evaluateBoard = function(last_move, board) {
-  return GetLandingHeight(last_move, board) * -4.500158825082766 +
+  return features.GetLandingHeight(last_move, board) * -4.500158825082766 +
       last_move.rows_removed * 3.4181268101392694 +
-      GetRowTransitions(board, this.number_of_columns) * -3.2178882868487753 +
-      GetColumnTransitions(board, this.number_of_columns) * -9.348695305445199 +
-      GetNumberOfHoles(board, this.number_of_columns) * -7.899265427351652 +
-      GetWellSums(board, this.number_of_columns) * -3.3855972247263626;
+      features.GetRowTransitions(board, this.number_of_columns) * -3.2178882868487753 +
+      features.GetColumnTransitions(board, this.number_of_columns) * -9.348695305445199 +
+      features.GetNumberOfHoles(board, this.number_of_columns) * -7.899265427351652 +
+      features.GetWellSums(board, this.number_of_columns) * -3.3855972247263626;
 };
 
 /**
@@ -210,3 +213,5 @@ ElTetris.prototype.getRandomPieceIndex = function() {
 ElTetris.prototype.getRandomPiece = function() {
   return PIECES[this.getRandomPieceIndex()];
 };
+
+module.exports = ElTetris;

@@ -257,3 +257,5 @@ PIECES[6] = [
 function parse(x) {
   return parseInt(x.split("").reverse().join(""), 2);
 }
+
+module.exports = PIECES;
